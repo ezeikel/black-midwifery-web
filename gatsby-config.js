@@ -2,6 +2,12 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const typekitConfig = {
+  typekit: {
+    id: process.env.TYPEKIT_ID,
+  },
+};
+
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken:
@@ -36,10 +42,35 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful starter",
+    title:
+      "Black Midwifery - A platform for Maternal health related information",
+    description: "A platform for Maternal health related information.",
+    author: "Dumebi Pemberton <dumebi@blackmidwifery.co>",
   },
-  pathPrefix: "/gatsby-contentful-starter",
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [process.env.GA_MEASUREMENT_ID],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared across all trackingIds
+        // gtagConfig: {
+        //   optimize_id: "OPT_CONTAINER_ID",
+        //   anonymize_ip: true,
+        //   cookie_expires: 0,
+        // },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          // respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          // exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
+      },
+    },
     "gatsby-transformer-remark",
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
@@ -47,6 +78,38 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: typekitConfig,
+    },
+    {
+      resolve: `gatsby-source-twitter`,
+      options: {
+        credentials: {
+          consumer_key: "PSl97FR38n7Y4Mkpy8zYnyioa",
+          consumer_secret: "VtIpPIqZawiqSWJSf0Sok4VflLfjzwGsMjLHZBnsvFWRPT0J72",
+          bearer_token:
+            "AAAAAAAAAAAAAAAAAAAAADfYJAEAAAAAiz8VRT7AioRbaEiFm3Tvu7j6SMI%3D4kXOV14hLNYkYTwkRAFF6RT0nR5vThNUZrRfAQuPvDZJQtQJbC",
+        },
+        queries: {
+          endSARSHashtag: {
+            endpoint: "search/tweets",
+            params: {
+              q: "#endSARS",
+              tweet_mode: "extended",
+            },
+          },
+        },
+      },
     },
   ],
 };
