@@ -1,16 +1,23 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styles from './navigation.module.css'
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
 
-export default () => (
-  <nav role="navigation">
-    <ul className={styles.navigation}>
-      <li className={styles.navigationItem}>
-        <Link to="/">Home</Link>
-      </li>
-      <li className={styles.navigationItem}>
-        <Link to="/blog/">Blog</Link>
+const Wrapper = styled.nav`
+  display: flex;
+  font-size: 2rem;
+  a + a {
+    margin-left: var(--spacing-large);
+  }
+`;
+
+const Navigation = () => (
+  <Wrapper>
+    <ul>
+      <li>
+        <Link to="/blog">Blog</Link>
       </li>
     </ul>
-  </nav>
-)
+  </Wrapper>
+);
+
+export default Navigation;

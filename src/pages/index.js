@@ -1,48 +1,83 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import { Helmet } from 'react-helmet'
-import Hero from '../components/hero'
-import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+import React from "react";
+import { graphql } from "gatsby";
+import get from "lodash/get";
+import styled from "styled-components";
+import Layout from "../components/layout";
+import ArticlePreviewList from "../components/articlePreviewList";
+import SEO from "../components/seo";
 
-class RootIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
-
-    return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
-      </Layout>
-    )
+const RecentPosts = styled.div`
+  ul {
+    display: flex;
+    flex-direction: column;
+    li + li {
+      margin-top: var(--spacing-large);
+    }
   }
-}
 
-export default RootIndex
+  @media (min-width: 768px) {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: var(--spacing-large);
+      li + li {
+        margin-top: 0;
+      }
+    }
+  }
+`;
 
-export const pageQuery = graphql`
-  query HomeQuery {
+// const RecentTweets = styled.div`
+//   display: flex;
+//   flex-direction: column;
+// `;
+
+const SubHeading = styled.h2`
+  font-size: 3.2rem;
+  font-family: var(--secondary-font-family);
+`;
+
+const IndexPage = ({ data }) => {
+  const posts = get(data, "allContentfulBlogPost.edges");
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <div>
+        <RecentPosts>
+          <SubHeading>Recent Posts</SubHeading>
+          <ArticlePreviewList posts={posts} />
+        </RecentPosts>
+        {/* <RecentTweets>
+          <SubHeading>Recent Tweets</SubHeading>
+          <ul>
+            <li>Tweet 1</li>
+            <li>Tweet 2</li>
+            <li>Tweet 3</li>
+          </ul>
+        </RecentTweets> */}
+      </div>
+    </Layout>
+  );
+};
+
+export const query = graphql`
+  query IndexPageQuery {
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
+          body {
+            childMarkdownRemark {
+              # excerpt(pruneLength: 180)
+              excerptAst(pruneLength: 180)
+              fields {
+                readingTime {
+                  text
+                }
+              }
+            }
+          }
           slug
           publishDate(formatString: "MMMM Do, YYYY")
           tags
@@ -59,28 +94,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
-      edges {
-        node {
-          name
-          shortBio {
-            shortBio
-          }
-          title
-          heroImage: image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-        }
-      }
-    }
   }
-`
+`;
+
+export default IndexPage;

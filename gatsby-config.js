@@ -42,8 +42,7 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title:
-      "Black Midwifery - A platform for Maternal health related information",
+    title: "Black Midwifery - Maternal health",
     description: "A platform for Maternal health related information.",
     author: "Dumebi Pemberton <dumebi@blackmidwifery.co>",
   },
@@ -71,7 +70,12 @@ module.exports = {
         },
       },
     },
-    "gatsby-transformer-remark",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: ["gatsby-remark-reading-time"],
+      },
+    },
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
