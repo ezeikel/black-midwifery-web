@@ -3,9 +3,20 @@ import styled from "styled-components";
 import ArticlePreview from "./articlePreview";
 
 const Wrapper = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: var(--spacing-large);
+  display: flex;
+  flex-direction: column;
+  li + li {
+    margin-top: var(--spacing-large);
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--spacing-large);
+    li + li {
+      margin-top: 0;
+    }
+  }
 `;
 
 const ArticlePreviewList = ({ posts, noexcerpts }) => (

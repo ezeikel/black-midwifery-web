@@ -6,32 +6,6 @@ import Layout from "../components/layout";
 import ArticlePreviewList from "../components/articlePreviewList";
 import SEO from "../components/seo";
 
-const RecentPosts = styled.div`
-  ul {
-    display: flex;
-    flex-direction: column;
-    li + li {
-      margin-top: var(--spacing-large);
-    }
-  }
-
-  @media (min-width: 768px) {
-    ul {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: var(--spacing-large);
-      li + li {
-        margin-top: 0;
-      }
-    }
-  }
-`;
-
-// const RecentTweets = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
-
 const SubHeading = styled.h2`
   font-size: 3.2rem;
   font-family: var(--secondary-font-family);
@@ -44,18 +18,10 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <div>
-        <RecentPosts>
+        <div>
           <SubHeading>Recent Posts</SubHeading>
           <ArticlePreviewList posts={posts} />
-        </RecentPosts>
-        {/* <RecentTweets>
-          <SubHeading>Recent Tweets</SubHeading>
-          <ul>
-            <li>Tweet 1</li>
-            <li>Tweet 2</li>
-            <li>Tweet 3</li>
-          </ul>
-        </RecentTweets> */}
+        </div>
       </div>
     </Layout>
   );
