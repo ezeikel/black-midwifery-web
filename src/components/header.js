@@ -11,8 +11,8 @@ const Wrapper = styled.header`
 `;
 
 const LogoText = styled.h1`
-  font-family: var(--secondary-font-family);
-  font-size: 5.4rem;
+  font-family: var(--font-family-secondary);
+  font-size: 3.2rem;
   margin: 0;
 `;
 

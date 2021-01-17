@@ -11,7 +11,7 @@ const Wrapper = styled.ul`
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: var(--spacing-large);
     li + li {
       margin-top: 0;

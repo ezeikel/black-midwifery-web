@@ -75,8 +75,7 @@ const Footer = () => {
         </ul>
       </SocialLinks>
       <Copyright>
-        &copy; Copyright {new Date().getFullYear()} Black Midwifery, all rights
-        reserved.
+        &copy; {new Date().getFullYear()} Black Midwifery, all rights reserved.
       </Copyright>
     </Wrapper>
   );

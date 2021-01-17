@@ -3,13 +3,9 @@ import { graphql } from "gatsby";
 import get from "lodash/get";
 import styled from "styled-components";
 import Layout from "../components/layout";
-import ArticlePreviewList from "../components/articlePreviewList";
 import SEO from "../components/seo";
-
-const SubHeading = styled.h2`
-  font-size: 3.2rem;
-  font-family: var(--secondary-font-family);
-`;
+import Hero from "../components/hero";
+import RecentPosts from "../components/recentPosts";
 
 const IndexPage = ({ data }) => {
   const posts = get(data, "allContentfulBlogPost.edges");
@@ -17,12 +13,8 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <div>
-        <div>
-          <SubHeading>Recent Posts</SubHeading>
-          <ArticlePreviewList posts={posts} />
-        </div>
-      </div>
+      <Hero />
+      <RecentPosts posts={posts} />
     </Layout>
   );
 };
@@ -48,7 +40,7 @@ export const query = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+            fluid(maxWidth: 300, maxHeight: 300, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }

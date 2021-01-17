@@ -5,12 +5,13 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   .gatsby-image-wrapper {
-    margin: 0 0 var(--spacing-large);
+    margin: 0 0 var(--spacing-medium);
   }
   h3 {
-    font-family: var(--secondary-font-family);
-    margin: 0 0 var(--spacing-medium);
+    margin: 0 0 var(--spacing-small);
     font-size: 2.4rem;
+    line-height: 1.5;
+    font-weight: bold;
   }
 `;
 
@@ -19,13 +20,21 @@ const ReadTime = styled.span`
   align-items: center;
   font-size: 1.4rem;
   color: #666666;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-small);
 `;
 
 const Excerpt = styled.div`
   font-size: 1.6rem;
   line-height: 1.5;
-  margin: 0 0 var(--spacing-small);
+  margin: 0 0 var(--spacing-medium);
+`;
+
+const ReadMore = styled.span`
+  font-size: 1.4rem;
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
 `;
 
 const ArticlePreview = ({ article, noexcerpt }) => {
@@ -44,7 +53,12 @@ const ArticlePreview = ({ article, noexcerpt }) => {
 
   return (
     <Wrapper>
-      <Img alt="" fluid={article.heroImage.fluid} />
+      <Img
+        fluid={article.heroImage.fluid}
+        objectFit="cover"
+        objectPosition="50% 50%"
+        alt=""
+      />
       <h3>
         <Link to={`/blog/${article.slug}`}>{article.title}</Link>
       </h3>
@@ -59,6 +73,9 @@ const ArticlePreview = ({ article, noexcerpt }) => {
           }}
         />
       )}
+      <ReadMore>
+        <Link to={`/blog/${article.slug}`}>Read Post</Link>
+      </ReadMore>
     </Wrapper>
   );
 };
