@@ -18,8 +18,8 @@ const Navigation = () => (
     <ul>
       <li>
         <Link to="/">Home</Link>
+        <Link to="/about">About Me</Link>
         <Link to="/blog">Blog</Link>
-        <Link to="/about">About</Link>
       </li>
     </ul>
   </Wrapper>

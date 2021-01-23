@@ -55,7 +55,7 @@ const Hero = () => {
           A platform for maternal health related info&shy;rmation
         </Heading>
         <FormWrapper>
-          <p>Sign up to our newsletter to get the latest news and updates.</p>
+          <p>Subscribe to our mailing list for updates.</p>
           <SignupForm />
         </FormWrapper>
       </div>
