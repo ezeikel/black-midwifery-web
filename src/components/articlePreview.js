@@ -55,9 +55,11 @@ const ArticlePreview = ({ article, noexcerpt }) => {
     <Wrapper>
       <Img
         fluid={article.heroImage.fluid}
-        objectFit="cover"
-        objectPosition="50% 50%"
-        alt=""
+        imgStyle={{
+          objectFit: "cover",
+          objectPosition: "50% 50%",
+          alt: "article-image",
+        }}
       />
       <h3>
         <Link to={`/blog/${article.slug}`}>{article.title}</Link>

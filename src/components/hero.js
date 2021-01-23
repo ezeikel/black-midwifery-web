@@ -6,8 +6,18 @@ const Wrapper = styled.div`
   display: flex;
   position: relative;
   padding-bottom: var(--spacing-large);
-  > div {
-    flex: 0 0 50%;
+  min-height: 75vh;
+  padding: var(--spacing-large);
+  background-color: rgba(243, 205, 194, 0.5);
+
+  @media (min-width: 768px) {
+    background-image: url("./black-woman-pregnant.svg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: contain;
+    > div {
+      flex: 0 0 50%;
+    }
   }
 `;
 
@@ -26,37 +36,29 @@ const FormWrapper = styled.div`
   position: relative;
   z-index: 2;
   p {
-    font-size: 1.6rem;
-    line-height: 22px;
+    font-size: 1.8rem;
+    line-height: 24px;
     margin: 0 0 var(--spacing-large);
-    width: 50%;
   }
-`;
-
-const Illustration = styled.div`
-  position: absolute;
-  top: calc(var(--spacing-huge) * -1);
-  right: calc(var(--spacing-large) * -1);
-  bottom: 0;
-  z-index: 1;
-  width: 100%;
-  background-image: url("./black-woman-pregnant.svg");
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: contain;
+  @media (min-width: 768px) {
+    p {
+      width: 50%;
+    }
+  }
 `;
 
 const Hero = () => {
   return (
-    <Wrapper>
+    <Wrapper className="full">
       <div>
-        <Heading>A platform for maternal health related information</Heading>
+        <Heading>
+          A platform for maternal health related info&shy;rmation
+        </Heading>
         <FormWrapper>
           <p>Sign up to our newsletter to get the latest news and updates.</p>
           <SignupForm />
         </FormWrapper>
       </div>
-      <Illustration />
     </Wrapper>
   );
 };

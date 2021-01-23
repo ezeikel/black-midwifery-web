@@ -16,9 +16,14 @@ library.add(faFacebookF, faTwitter, faInstagram, faWhatsapp);
 const Wrapper = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+`;
+
+const Main = styled.main`
+  display: grid;
   grid-template-columns: var(--spacing-large) 1fr var(--spacing-large);
   grid-row-gap: var(--spacing-huge);
-  min-height: 100vh;
+  margin-bottom: var(--spacing-huge);
 
   > * {
     grid-column: 2 / -2;
@@ -26,11 +31,6 @@ const Wrapper = styled.div`
   > .full {
     grid-column: 1 / -1;
   }
-`;
-
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
 `;
 
 const Layout = ({ children }) => (

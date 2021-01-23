@@ -15,29 +15,49 @@ const SignupSchema = Yup.object().shape({
 const Wrapper = styled.div`
   display: flex;
 
+  button {
+    box-shadow: var(--box-shadow);
+  }
+
   @media (min-width: 768px) {
-    max-width: 400px;
+    max-width: 480px;
   }
 `;
 
 const InputWrapper = styled.div`
   flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  margin-bottom: var(--spacing-medium);
+
+  @media (min-width: 768px) {
+    width: auto;
+    margin-bottom: 0;
+  }
 `;
 
 const StyledForm = styled(Form)`
   width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
   button {
-    margin-left: var(--spacing-medium);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    button {
+      flex: 0 0 auto;
+      width: auto;
+      margin-left: var(--spacing-medium);
+    }
   }
 `;
 
-const SignupForm = ({ openModal }) => {
+const SignupForm = ({ openModal, className }) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Formik
         initialValues={{ email: "" }}
         validationSchema={SignupSchema}

@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
 import get from "lodash/get";
-import styled from "styled-components";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Hero from "../components/hero";
 import RecentPosts from "../components/recentPosts";
+import InstagramFeed from "../components/instagramFeed";
 
 const IndexPage = ({ data }) => {
   const posts = get(data, "allContentfulBlogPost.edges");
@@ -15,6 +15,7 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <Hero />
       <RecentPosts posts={posts} />
+      <InstagramFeed />
     </Layout>
   );
 };
@@ -40,7 +41,7 @@ export const query = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 300, maxHeight: 300, resizingBehavior: SCALE) {
+            fluid(maxWidth: 300, maxHeight: 300) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
