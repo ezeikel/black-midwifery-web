@@ -7,9 +7,13 @@ const Wrapper = styled.nav`
   font-size: 2rem;
   a {
     font-family: var(--font-family-primary);
-  }
-  a + a {
-    margin-left: var(--spacing-large);
+    border-bottom: 2px solid transparent;
+    &.active {
+      border-color: var(--color-primary);
+    }
+    & + a {
+      margin-left: var(--spacing-large);
+    }
   }
 `;
 
@@ -17,9 +21,15 @@ const Navigation = () => (
   <Wrapper>
     <ul>
       <li>
-        <Link to="/">Home</Link>
-        <Link to="/about">About Me</Link>
-        <Link to="/blog">Blog</Link>
+        <Link to="/" activeClassName="active">
+          Home
+        </Link>
+        <Link to="/about" activeClassName="active">
+          About
+        </Link>
+        <Link to="/blog" activeClassName="active">
+          Blog
+        </Link>
       </li>
     </ul>
   </Wrapper>

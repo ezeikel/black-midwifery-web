@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import Heading from "./Heading";
+import Heading from "./heading";
 
 const INSTAGRAM_API_URL =
   "https://www.instagram.com/graphql/query/?query_hash=003056d32c2554def87228bc3fd9668a&variables=%7B%22id%22%3A%2227548136075%22%2C%22first%22%3A12%2C%22after%22%3A%22%22%7D";

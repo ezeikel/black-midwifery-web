@@ -10,8 +10,9 @@ import {
   faInstagram,
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/pro-light-svg-icons";
 
-library.add(faFacebookF, faTwitter, faInstagram, faWhatsapp);
+library.add(faFacebookF, faTwitter, faInstagram, faWhatsapp, faEnvelope);
 
 const Wrapper = styled.div`
   display: grid;

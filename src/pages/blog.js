@@ -5,11 +5,7 @@ import styled from "styled-components";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import ArticlePreviewList from "../components/articlePreviewList";
-
-const Heading = styled.h1`
-  font-size: 3.2rem;
-  font-family: var(--secondary-font-family);
-`;
+import Heading from "../components/heading";
 
 const Posts = styled.div`
   display: flex;
@@ -23,7 +19,7 @@ const BlogPage = ({ data }) => {
     <Layout>
       <div>
         <SEO title="Blog" />
-        <Heading>Blog</Heading>
+        <Heading text="Blog" />
         <Posts>
           <ArticlePreviewList posts={posts} noexcerpts />
         </Posts>
@@ -53,7 +49,7 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+            fluid(maxWidth: 300, maxHeight: 300) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }

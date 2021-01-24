@@ -30,9 +30,10 @@ const Excerpt = styled.div`
 `;
 
 const ReadMore = styled.span`
+  --link-color: var(--color-primary);
+
   font-size: 1.4rem;
   a {
-    color: var(--color-primary);
     text-decoration: underline;
   }
 `;

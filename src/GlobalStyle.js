@@ -69,6 +69,8 @@ export default createGlobalStyle`
     --breakpoint-md: 768px; /* iPads, tablests */
     --breakpoint-md: 1024px; /* small screens, laptops */
     --breakpoint-lg: 1200px; /* extra large screens, TV */
+
+    --link-color: var(--color-black);
   }
 
   * {
@@ -97,7 +99,7 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
     &:link, &:active, &:focus, &:visited {
-      color: var(--color-black);
+      color: var(--link-color);
     }
   }
 

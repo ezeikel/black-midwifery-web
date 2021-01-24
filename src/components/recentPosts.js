@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ArticlePreviewList from "./articlePreviewList";
-import Heading from "./Heading";
+import Heading from "./heading";
 
 const Wrapper = styled.div`
   background-color: #fafafa;

@@ -60,6 +60,7 @@ const Content = styled.div`
   }
 
   a {
+    --link-color: var(--color-primary);
     text-decoration: underline;
   }
 `;

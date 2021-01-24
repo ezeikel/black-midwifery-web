@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import React from "react";
 import styled from "styled-components";
+import Icon from "./icon";
 import SignupForm from "./signupForm";
 
 const Wrapper = styled.footer`
@@ -71,20 +72,6 @@ const LogoText = styled.h1`
 
 const StyledSignupForm = styled(SignupForm)`
   flex: 1 0 auto;
-
-  /* form {
-    flex-direction: column;
-    > div,
-    > button {
-      width: 100%;
-    }
-    > div {
-      margin-bottom: var(--spacing-medium);
-    }
-    > button {
-      margin: 0;
-    }
-  } */
 `;
 
 const Footer = () => {
@@ -93,7 +80,7 @@ const Footer = () => {
       <LogoText>Black Midwifery</LogoText>
       <div>
         <SocialLinks>
-          <span>Follow us</span>
+          <span>Get in touch</span>
           <ul>
             <li>
               <OutboundLink href="https://www.instagram.com/blackmidwifery">
@@ -120,6 +107,11 @@ const Footer = () => {
                   color="var(--color-white)"
                   size="3x"
                 />
+              </OutboundLink>
+            </li>
+            <li>
+              <OutboundLink href="mailto:dumebi@blackmidwidery.co">
+                <Icon name="envelope" size="3x" color="var(--color-white)" />
               </OutboundLink>
             </li>
           </ul>
