@@ -5,7 +5,6 @@ import styled from "styled-components";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 import ArticlePreviewList from "../components/articlePreviewList";
-import Heading from "../components/heading";
 
 const Posts = styled.div`
   display: flex;
@@ -19,7 +18,6 @@ const BlogPage = ({ data }) => {
     <Layout>
       <div>
         <SEO title="Blog" />
-        <Heading text="Blog" />
         <Posts>
           <ArticlePreviewList posts={posts} noexcerpts />
         </Posts>
