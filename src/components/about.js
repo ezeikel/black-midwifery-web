@@ -36,6 +36,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  line-height: 1.5;
 `;
 
 const About = () => {
@@ -63,8 +64,8 @@ const About = () => {
         />
         <h3>Dumebi</h3>
         <p>
-          Hello, my name is Dumebi Pemberton &amp; I am the founder of Black
-          Midwifery. I am a registered midwife in the UK &amp; a mother to two
+          Hello, my name is Dumebi Pemberton and I am the founder of Black
+          Midwifery. I am a registered midwife in the UK and a mother to two
           amazing young children.
         </p>
         <p>
@@ -86,13 +87,13 @@ const About = () => {
         <p>
           I am also an Adult registered nurse, I qualified over 10 years ago and
           have a background in gynaecology nursing; working in gynae oncology,
-          fertility &amp; TOP clinics and assisting in hystreroscopy, colposcopy
-          &amp; LLETZ procedures.
+          fertility and TOP clinics and assisting in hystreroscopy, colposcopy
+          and LLETZ procedures.
         </p>
         <p>
-          I have always been passionate about women’s health &amp; consider
-          myself a champion for women’s &amp; maternal health which initiated me
-          to start Black Midwifery’s Instagram page.
+          I have always been passionate about women’s health and consider myself
+          a champion for women’s and maternal health which initiated me to start
+          Black Midwifery’s Instagram page.
         </p>
         <h3>Black Midwifery</h3>
         <p>
@@ -103,9 +104,9 @@ const About = () => {
         <p>
           Apart from sharing knowledge, my aim for BM is to ensure
           representation of Black Women. In my first pregnancy, I researched a
-          lot of pregnancy blogs, pregnancy IG pages and even pregnancy &amp;
+          lot of pregnancy blogs, pregnancy IG pages and even pregnancy and
           birth apps and I felt they lacked in showing representation of black
-          women &amp; families. Black Midwifery is here to make a difference!
+          women and families. Black Midwifery is here to make a difference!
         </p>
       </Content>
     </Wrapper>

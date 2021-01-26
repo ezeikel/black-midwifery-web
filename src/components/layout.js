@@ -4,6 +4,8 @@ import GlobalStyle from "../GlobalStyle";
 import Header from "./header";
 import Footer from "./footer";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import {
   faFacebookF,
   faTwitter,
@@ -18,6 +20,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  position: relative;
 `;
 
 const Main = styled.main`
@@ -34,6 +37,42 @@ const Main = styled.main`
   }
 `;
 
+const StyledToastContainer = styled(ToastContainer).attrs({
+  className: "toast-container",
+  toastClassName: "toast",
+  bodyClassName: "body",
+  progressClassName: "progress",
+})`
+  /* .toast-container */
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  .toast {
+    background-color: var(--color-primary);
+    margin: 0;
+    cursor: auto;
+  }
+  button[aria-label="close"] {
+    display: none;
+  }
+  .toast {
+    background-color: var(--color-primary);
+    border-radius: 0;
+  }
+  .body {
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-family-primary);
+    margin: 0;
+    display: flex;
+    place-content: center;
+    font-size: 1.6rem;
+    padding: var(--spacing-medium);
+  }
+`;
+
 const Layout = ({ children }) => (
   <>
     <GlobalStyle />
@@ -41,6 +80,14 @@ const Layout = ({ children }) => (
       <Header />
       <Main>{children}</Main>
       <Footer />
+      <StyledToastContainer
+        position="top-right"
+        draggable
+        hideProgressBar
+        pauseOnHover
+        autoClose={3000}
+        closeOnClick={false}
+      />
     </Wrapper>
   </>
 );

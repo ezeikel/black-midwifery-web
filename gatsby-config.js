@@ -96,6 +96,13 @@ module.exports = {
       options: typekitConfig,
     },
     {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint:
+          "https://blackmidwifery.us7.list-manage.com/subscribe/post?u=77a381229eec52e92e3d237f1&amp;id=4ec3b9974e",
+      },
+    },
+    {
       resolve: `gatsby-source-twitter`,
       options: {
         credentials: {
@@ -113,6 +120,18 @@ module.exports = {
             },
           },
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Black Midwifery - Maternal health`,
+        short_name: `Black Midwifery - Maternal health`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#E69882`,
+        display: `standalone`,
+        icon: "src/images/favicon.png",
       },
     },
   ],

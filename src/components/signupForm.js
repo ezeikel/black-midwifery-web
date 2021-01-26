@@ -3,13 +3,14 @@ import styled from "styled-components";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 import Button from "./button";
 import TextInput from "./textInput";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
-    .email("Your email doesn't look quite right")
-    .required("Enter an email"),
+    .email("That email doesn't look quite right")
+    .required("Looks like your email is missing"),
 });
 
 const Wrapper = styled.div`
@@ -39,6 +40,7 @@ const StyledForm = styled(Form)`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 
   button {
     width: 100%;
@@ -46,7 +48,6 @@ const StyledForm = styled(Form)`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    align-items: center;
     button {
       flex: 0 0 auto;
       width: auto;
@@ -55,7 +56,7 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const SignupForm = ({ openModal, className }) => {
+const SignupForm = ({ className }) => {
   return (
     <Wrapper className={className}>
       <Formik
@@ -71,7 +72,10 @@ const SignupForm = ({ openModal, className }) => {
           const listData = {};
 
           try {
-            const result = await addToMailchimp(email, listData);
+            const result = await addToMailchimp(
+              email.toLocaleLowerCase(),
+              listData
+            );
 
             if (result.result === "error") {
               const errorMessage = result.msg.includes("is already subscribed")
@@ -87,7 +91,7 @@ const SignupForm = ({ openModal, className }) => {
               resetForm();
 
               // open thank you modal
-              openModal();
+              toast("You have succesfully subscribed 🥳 Thank you!");
             }
           } catch (e) {
             if (e.message === "Timeout") {
@@ -113,7 +117,7 @@ const SignupForm = ({ openModal, className }) => {
               primary
               type="submit"
               disabled={isSubmitting}
-              text={`Subscrib${isSubmitting ? "ing" : ""}e`}
+              text={`Subscrib${isSubmitting ? "ing" : "e"}`}
             />
           </StyledForm>
         )}

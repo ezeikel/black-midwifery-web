@@ -70,8 +70,27 @@ const LogoText = styled.h1`
   }
 `;
 
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+  p {
+    font-size: 1.8rem;
+    line-height: 24px;
+    margin: 0 0 var(--spacing-large);
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    flex: 1 0 auto;
+    align-items: flex-end;
+  }
+`;
+
 const StyledSignupForm = styled(SignupForm)`
-  flex: 1 0 auto;
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Footer = () => {
@@ -110,13 +129,16 @@ const Footer = () => {
               </OutboundLink>
             </li>
             <li>
-              <OutboundLink href="mailto:dumebi@blackmidwidery.co">
+              <OutboundLink href="mailto:dumebi@blackmidwifery.co">
                 <Icon name="envelope" size="3x" color="var(--color-white)" />
               </OutboundLink>
             </li>
           </ul>
         </SocialLinks>
-        <StyledSignupForm />
+        <FormWrapper>
+          <p>Subscribe to our mailing list for updates.</p>
+          <StyledSignupForm />
+        </FormWrapper>
       </div>
       <Copyright>
         &copy; {new Date().getFullYear()} Black Midwifery, all rights reserved.
