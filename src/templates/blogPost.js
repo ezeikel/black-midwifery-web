@@ -25,6 +25,7 @@ const Content = styled.div`
   flex-direction: column;
   font-size: 1.8rem;
   line-height: 1.5;
+  overflow-wrap: break-word;
 
   * {
     color: #000f1c;

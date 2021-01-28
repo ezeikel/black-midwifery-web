@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-size: 6.4rem;
+  font-size: 4.8rem;
   line-height: 68px;
   font-family: var(--font-family-secondary);
   margin: 0 0 var(--spacing-huge);
@@ -34,6 +34,10 @@ const Heading = styled.h1`
 
   overflow-wrap: break-word;
   word-wrap: break-word;
+
+  @media (min-width: 768px) {
+    font-size: 6.4rem;
+  }
 `;
 
 const FormWrapper = styled.div`

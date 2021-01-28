@@ -99,7 +99,7 @@ const Footer = () => {
       <LogoText>Black Midwifery</LogoText>
       <div>
         <SocialLinks>
-          <span>Get in touch</span>
+          <span>Let&apos;s connect</span>
           <ul>
             <li>
               <OutboundLink href="https://www.instagram.com/blackmidwifery">
