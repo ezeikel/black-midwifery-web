@@ -49,8 +49,8 @@ const Wrapper = styled.button`
       : null}
 `;
 
-const Button = ({ text, children, ...props }) => (
-  <Wrapper {...props}>
+const Button = ({ text, children, className, ...props }) => (
+  <Wrapper className={className} {...props}>
     {children}
     {text}
   </Wrapper>

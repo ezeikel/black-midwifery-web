@@ -17,8 +17,8 @@ const Wrapper = styled.nav`
   }
 `;
 
-const Navigation = () => (
-  <Wrapper>
+const Navigation = ({ className }) => (
+  <Wrapper className={className}>
     <ul>
       <li>
         <Link to="/" activeClassName="active">
