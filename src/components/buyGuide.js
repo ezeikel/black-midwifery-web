@@ -11,6 +11,8 @@ const getStripe = () => {
 };
 
 const Checkout = ({ className }) => {
+  console.log({ sKey: process.env.GATSBY_STRIPE_KEY });
+
   const [loading, setLoading] = useState(false);
 
   const redirectToCheckout = async (event) => {
@@ -21,8 +23,8 @@ const Checkout = ({ className }) => {
     const { error } = await stripe.redirectToCheckout({
       mode: "payment",
       lineItems: [{ price: "price_1IlNPIA5obl98iViOBypvOWy", quantity: 1 }],
-      successUrl: process.env.FRONTEND_URL,
-      cancelUrl: process.env.FRONTEND_URL,
+      successUrl: `${process.env.GATSBY_FRONTEND_URL}/purchase-success`,
+      cancelUrl: process.env.GATSBY_FRONTEND_URL,
     });
 
     if (error) {
