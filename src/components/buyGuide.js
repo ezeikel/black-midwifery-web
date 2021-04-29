@@ -5,7 +5,7 @@ import Button from "./button";
 let stripePromise;
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe(process.env.STRIPE_KEY);
+    stripePromise = loadStripe(process.env.GATSBY_STRIPE_KEY);
   }
   return stripePromise;
 };
