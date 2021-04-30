@@ -11,8 +11,6 @@ const getStripe = () => {
 };
 
 const Checkout = ({ className }) => {
-  console.log({ sKey: process.env.GATSBY_STRIPE_KEY });
-
   const [loading, setLoading] = useState(false);
 
   const redirectToCheckout = async (event) => {
@@ -22,7 +20,15 @@ const Checkout = ({ className }) => {
     const stripe = await getStripe();
     const { error } = await stripe.redirectToCheckout({
       mode: "payment",
-      lineItems: [{ price: "price_1IlNPIA5obl98iViOBypvOWy", quantity: 1 }],
+      lineItems: [
+        {
+          price:
+            process.env.NODE_ENV === "production"
+              ? "price_1IlgkBA5obl98iViK9CguaQr"
+              : "price_1IlNPIA5obl98iViOBypvOWy",
+          quantity: 1,
+        },
+      ],
       successUrl: `${process.env.GATSBY_FRONTEND_URL}/purchase-success`,
       cancelUrl: process.env.GATSBY_FRONTEND_URL,
     });
